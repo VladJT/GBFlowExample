@@ -17,6 +17,10 @@ class MainActivity : AppCompatActivity() {
         TimerViewModel()
     }
 
+    private val timerViewModel2: TimerViewModel by lazy {
+        TimerViewModel()
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,14 +36,25 @@ class MainActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.text_time).text = it
         }
 
+        timerViewModel2.liveData.observe(this) {
+            findViewById<TextView>(R.id.text_time2).text = it
+        }
+
         findViewById<Button>(R.id.button_start).setOnClickListener {
             timerViewModel.startTimer()
         }
+
+        findViewById<Button>(R.id.button_start2).setOnClickListener {
+            timerViewModel2.startTimer()
+        }
+
         findViewById<Button>(R.id.button_pause).setOnClickListener {
             timerViewModel.pauseTimer()
+            timerViewModel2.pauseTimer()
         }
         findViewById<Button>(R.id.button_stop).setOnClickListener {
             timerViewModel.stopTimer()
+            timerViewModel2.stopTimer()
         }
 
 
