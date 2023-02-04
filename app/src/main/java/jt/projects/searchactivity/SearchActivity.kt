@@ -1,9 +1,10 @@
-package jt.projects.flowexample
+package jt.projects.searchactivity
 
 import android.os.Bundle
 import android.widget.SearchView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import jt.projects.flowexample.R
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 
@@ -51,6 +52,7 @@ class SearchActivity : AppCompatActivity() {
                 query?.let { queryStateFlow.value = it }
                 return true
             }
+
             override fun onQueryTextChange(newText: String): Boolean {
                 queryStateFlow.value = newText
                 return true
@@ -65,6 +67,7 @@ class SearchActivity : AppCompatActivity() {
                 query?.let { queryStateFlow.value = it }
                 return true
             }
+
             override fun onQueryTextChange(newText: String): Boolean {
                 query.value = newText
                 return true
@@ -72,7 +75,6 @@ class SearchActivity : AppCompatActivity() {
         })
         return query
     }
-
 
 
     override fun onDestroy() {

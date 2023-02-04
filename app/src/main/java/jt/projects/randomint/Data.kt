@@ -39,10 +39,10 @@ internal class DataSource(
 
 internal class Repository(
     dataSource: DataSource = DataSource()
-){
+) {
     val userData: Flow<Data> = dataSource
         .data
-        .map {  Data(it) }
+        .map { Data(it) }
     //.onEach { saveInCache(it) }//Оператор onEach опционален. Он показывает, что значение, возвращаемое DataSource можно
     //сохранить для дальнейшего использования или совершить с ним неограниченное количество
     //операций
@@ -50,8 +50,8 @@ internal class Repository(
 
 internal class MainViewModel(
     repository: Repository = Repository()
-): ViewModel(){
-    val liveData : LiveData<Data> = repository.userData.asLiveData()
+) : ViewModel() {
+    val liveData: LiveData<Data> = repository.userData.asLiveData()
 //
 //    init{
 //        viewModelScope.launch {
